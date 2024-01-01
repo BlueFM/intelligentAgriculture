@@ -1,4 +1,8 @@
-import { Mine } from "../views/mine/mine"
+import {HomePage, } from "../views/home/home";
+import {SearchPage,} from "../views/search/search";
+import {ShoppingCartPage} from "../views/shoppingCart/shoppingCart";
+import {MinePage, } from "../views/mine/mine";
+
 @Entry
 @Component
 struct Index {
@@ -15,19 +19,16 @@ struct Index {
   Row(){
     Tabs({index: this.currentIndex, controller: this.tabsController, barPosition: BarPosition.End}){
       TabContent(){
-        // Text("Home Context");
-        // Text(String(this.currentIndex));
-        // MineHeader()
+        HomePage();
       }.tabBar(this.tabBuilder("Home",0,$r('app.media.home3'), $r('app.media.home1')));
       TabContent(){
-        Text("Search Context");
+        SearchPage();
       }.tabBar(this.tabBuilder("Search",1,$r('app.media.Search_3'), $r('app.media.Search_1')));
       TabContent(){
-        Text("Shopping Cart Context");
+        ShoppingCartPage();
       }.tabBar(this.tabBuilder("Shopping Cart",2,$r('app.media.Bag'), $r('app.media.Bag2_2x')));
       TabContent(){
-        // Text("Search Context");
-        Mine()
+        MinePage();
       }.tabBar(this.tabBuilder("About Me",3,$r('app.media.user_3'), $r('app.media.user_1')));
 
     }.barHeight('56vp') // 虚拟像素, 设置标签页的属性

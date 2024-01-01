@@ -1,4 +1,5 @@
 
+import router from '@ohos.router';
 @Preview
 @Component
 struct LoginInfo{
@@ -15,7 +16,10 @@ struct LoginInfo{
           .fontColor('#FFFFFF')
           .fontWeight("700vp")
           .height("25vp")
-          .margin({left: "5vp"});
+          .margin({left: "5vp"})
+          .onClick(()=>{
+            router.pushUrl({url: "pages/login"})
+          });
       }
     }.width("100%").
     padding({left: "24vp", right: "24vp"}).
