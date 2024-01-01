@@ -5,7 +5,7 @@ struct MineNavigator{
 
   @Builder private  builderItem(img: Resource, title: string) {
     Column() {
-      Image(img).width('30vp').height('30vp')
+      Image(img).width('25vp').height('25vp')
       Text(title).fontColor('#666666').fontSize('14vp').height('25vp')
     }.justifyContent(FlexAlign.Center);
   };
