@@ -53,10 +53,13 @@ struct Login {
           .backgroundColor(Color.White)
           .borderRadius(10);
 
-          // 登录按钮
+          // 按钮
           Row(){
             Button('sign up').width("45%").borderRadius(8)
-              .backgroundColor(Color.White).fontColor(Color.Gray).margin({right: 30});
+              .backgroundColor(Color.White).fontColor(Color.Gray).margin({right: 30})
+              .onClick(() =>{
+                promptAction.showToast({message: "正在注册"})
+              });
             Button('login').width("45%").borderRadius(8)
               .onClick(() =>{
               promptAction.showToast({message: "正在登陆"})
