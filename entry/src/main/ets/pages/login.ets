@@ -59,10 +59,10 @@ struct Login {
           // 按钮
           Row(){
 
-            Button('sign up').width("45%").borderRadius(8)
+            Button('register').width("45%").borderRadius(8)
               .backgroundColor(Color.White).fontColor(Color.Gray).margin({right: 30})
               .onClick(() =>{
-                promptAction.showToast({message: "正在注册"})
+            router.pushUrl({url:"pages/signUp"})
               });
 
             Button('login').width("45%").borderRadius(8)
