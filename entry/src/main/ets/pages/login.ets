@@ -1,11 +1,14 @@
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
+
+import {login}  from '../api/user'
+
 @Entry
 @Component
 struct Login {
 
   @State username: string = 'user';
-  @State pwd: string = '123456';
+  @State pwd: string = 'user123';
 
   build() {
     Stack(){
@@ -55,14 +58,25 @@ struct Login {
 
           // 按钮
           Row(){
+
             Button('sign up').width("45%").borderRadius(8)
               .backgroundColor(Color.White).fontColor(Color.Gray).margin({right: 30})
               .onClick(() =>{
                 promptAction.showToast({message: "正在注册"})
               });
+
             Button('login').width("45%").borderRadius(8)
               .onClick(() =>{
-              promptAction.showToast({message: "正在登陆"})
+                // 获取token
+                const promise = login(this.username,this.pwd);
+                promise.then((rst) => {
+                  const resp = JSON.parse(rst.result.toString());
+                  globalThis.token = resp.data;
+                  router.back();
+
+                }).catch(err => {
+                  promptAction.showToast({message: JSON.stringify(err)})
+                });
               });
           }.width('90%').height(50).margin({top: 40});
 
