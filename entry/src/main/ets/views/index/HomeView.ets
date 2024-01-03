@@ -165,8 +165,10 @@ export struct Home {
           Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
             ForEach(this.goodsSrc, (item, i) => {
               Column() {
-                Image(`${baseUrl}/file/${item.picture}`)
+                Text(`${baseUrl}/file/${item.picture}`)
                   .height(100).width('100%')
+                // Image(`${baseUrl}/file/${item.picture}`)
+                //   .height(100).width('100%')
                 Column(){
                   Row(){
                     Image(item.type == 'goods' ? $r('app.media.gong') : $r('app.media.xu')).width(30).height(30)
