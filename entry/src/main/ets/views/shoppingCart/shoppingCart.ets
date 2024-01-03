@@ -13,8 +13,8 @@ struct ShoppingCartPage{
   @State goodsSrc: Array<any> = [];
 
 
-  getCartInfo(){
-    getCartList().then(
+  async getCartInfo(){
+    await getCartList().then(
       (rst) => {
         let carData = JSON.parse(rst.result.toString());
         for (let i = 0; i < carData.length; i++){
@@ -38,14 +38,16 @@ struct ShoppingCartPage{
     )
   };
 
-  aboutToAppear(){
-    this.getCartInfo()
+  async aboutToAppear(){
 
+    await this.getCartInfo()
   };
 
   build(){
     Column() {
+
       if(!globalThis.token){
+
         Column(){
           Image($r('app.media.illustration_3x')).width(200).height(200);
           Text("未登录").fontSize(20).fontColor(Color.Gray).margin({top:30});
@@ -53,9 +55,12 @@ struct ShoppingCartPage{
           Button("登录").margin({top:20}).width(120).height(50).borderRadius(25)
             .onClick(()=> router.pushUrl({url: "pages/login"}))
         }
+
       }else{
+
         if(this.goodsLength == 0){
           Column(){
+
             Image($r('app.media.illustration_3x')).width(200).height(200);
             Text("购物车是空的").fontSize(20).fontColor(Color.Gray).margin({top:30});
             Text("快去看看吧").fontSize(24).fontColor(Color.Black);
