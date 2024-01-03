@@ -1,13 +1,10 @@
 {
   "src": [
-
     "pages/expert/ExpertQuestionPage",
     "pages/expert/ExpertReservePage",
     "pages/expert/KnowledgeInfoPage",
-
     "pages/info/EditInfoPage",
     "pages/info/UpdatePasswordPage",
-
     "pages/buy",
     "pages/buyResult",
     "pages/ExpertPage",
@@ -22,8 +19,7 @@
     "pages/QuestionInfoPage",
     "pages/RegPage",
     "pages/signUp",
-    "pages/UserInfoPage"
-
-
+    "pages/UserInfoPage",
+    "pages/BuyResultPage"
   ]
 }

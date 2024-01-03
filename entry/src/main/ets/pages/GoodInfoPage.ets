@@ -2,9 +2,10 @@ import router from '@ohos.router'
 import promptAction from '@ohos.promptAction'
 import http from '@ohos.net.http';
 import { baseUrl } from '../api/BaseData';
+import { addToCar } from '../api/CarApi';
 @Entry
 @Component
-struct GoodsInfoPage {
+struct GoodInfoPage {
   @State info:any='';
   @State isShow:boolean=false
   aboutToAppear(){
@@ -50,6 +51,29 @@ struct GoodsInfoPage {
             Button('加入购物车')
               .visibility(this.info.type=='goods'?Visibility.Visible:Visibility.None)
               .backgroundColor(Color.Red)
+              .onClick(()=>{
+                if(globalThis.token){
+                  let id = this.info.orderId
+                  addToCar(this.info.orderId).then((res)=>{
+                    let rst = JSON.parse(res.result.toString());
+                    if(rst.code==20000){
+                      promptAction.showToast({message:"添加商品到购物车成功！",duration:2000})
+                    }else{
+                      promptAction.showToast({message:"添加商品到购物车失败！",duration:2000})
+                    }
+                  })
+                }else{
+                  AlertDialog.show({
+                    title: '提示',
+                    message: "请先登录！",
+                    primaryButton: {
+                      value: '确定',
+                      action: () => {
+                      }
+                    }
+                  })
+                }
+              })
             Button('联系买家')
               .visibility(this.info.type=='needs'?Visibility.Visible:Visibility.None)
               .onClick(()=>{
