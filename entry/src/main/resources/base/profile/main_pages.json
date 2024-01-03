@@ -7,6 +7,7 @@
     "pages/buyResult",
     "pages/Index",
     "pages/LoginPage",
-    "pages/RegPage"
+    "pages/RegPage",
+    "pages/GoodsPage"
   ]
 }

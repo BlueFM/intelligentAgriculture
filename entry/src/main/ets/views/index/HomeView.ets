@@ -1,3 +1,4 @@
+import router from '@ohos.router';
 import { baseUrl } from '../../api/BaseData';
 import { getLocation, getMyIP } from '../../api/CityApi';
 import  {HttpManager} from '../../util/HttpManager'
@@ -122,14 +123,22 @@ export struct Home {
           Image($r('app.media.image')).width(70).margin({ bottom: 10 })
           Text('商品货源').fontSize(14)
         }.onClick(() => {
-
+          router.pushUrl({
+            url:'pages/GoodsPage',
+            params:{
+              type:'goods'
+            }} )
         })
 
         Column() {
           Image($r('app.media.icon2')).width(70).margin({ bottom: 10 })
           Text('求购需求').fontSize(14)
         }.onClick(() => {
-
+          router.pushUrl({
+            url:'pages/GoodsPage',
+            params:{
+              type:'needs'
+            }} )
         })
 
         Column() {
