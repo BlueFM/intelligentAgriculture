@@ -17,6 +17,7 @@ struct GoodsPage {
   }
 
   getGoodsPage() {
+
     getGoods(this.type,this.pageNum).then((res)=>{
       let imageDataArray = JSON.parse(res.result.toString()).data.list;
       for (let index = 0; index < imageDataArray.length; index++) {
