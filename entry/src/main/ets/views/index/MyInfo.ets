@@ -1,4 +1,5 @@
 import router from '@ohos.router';
+import promptAction from '@ohos.promptAction';
 import { baseUrl } from '../../api/BaseData';
 import { getInfo } from '../../api/LoginApi';
 @Preview
@@ -75,14 +76,28 @@ export struct MyInfo {
           Column(){
             Image($r('app.media.3D')).width(30).height(30)
             Text('我的问答').fontColor('#666666').fontSize(14).height(25)
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/MyQuestionPage'})
+            }
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
           //2
           Column(){
             Image($r('app.media.Clock1')).width(30).height(30)
 
             Text('我的预约').fontColor('#666666').fontSize(14).height(25)
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/MyReservePage'})
+            }
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
           //3
           Column(){

@@ -20,6 +20,10 @@
     "pages/RegPage",
     "pages/signUp",
     "pages/UserInfoPage",
-    "pages/BuyResultPage"
+    "pages/BuyResultPage",
+    "pages/info/MyQuestionPage",
+    "pages/info/MyReservePage",
+    "pages/info/MyReserveInfoPage"
+
   ]
 }
