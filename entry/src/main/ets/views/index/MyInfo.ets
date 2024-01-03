@@ -188,7 +188,14 @@ export struct MyInfo {
               Image($r('app.media.user')).width(20).height(20).margin({right:10})
               Text('我的需求').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/MyGoodsPage',params:{type:'needs'}})
+              }
+            })
+            .width('100%').height(55).padding({left:20,right:20})
           }
           ListItem(){
             //2
@@ -196,7 +203,13 @@ export struct MyInfo {
               Image($r('app.media.tabler_credit_card')).width(20).height(20).margin({right:10})
               Text('我发布的').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/MyGoodsPage',params:{type:'goods'}})
+              }
+            }).width('100%').height(55).padding({left:20,right:20})
           }
 
           ListItem(){

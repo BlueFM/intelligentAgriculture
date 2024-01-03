@@ -25,6 +25,8 @@
     "pages/info/MyReservePage",
     "pages/info/MyReserveInfoPage",
     "pages/info/MyBuysPage",
-    "pages/info/MySellsPage"
+    "pages/info/MySellsPage",
+    "pages/MyGoodsPage",
+    "pages/ReleaseGoodsPage"
   ]
 }
