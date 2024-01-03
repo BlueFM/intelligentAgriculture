@@ -1,6 +1,7 @@
 import {register} from '../api/user';
 import router from '@ohos.router';
 import http from '@ohos.net.http';
+import promptAction from '@ohos.promptAction';
 @Entry
 @Component
 struct SignUp {
@@ -33,7 +34,6 @@ struct SignUp {
           primaryButton:{
             value:'确定',
             action:() =>{
-             router.back()
             }
           }
         })
