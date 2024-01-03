@@ -11,6 +11,15 @@
     "pages/expert/ExpertQuestionPage",
     "pages/expert/ExpertReservePage",
     "pages/QuestionInfoPage",
-    "pages/ExpertPage"
+    "pages/ExpertPage",
+    "pages/GoodsPage",
+    "pages/GoodInfoPage",
+    "pages/UserInfoPage",
+    "pages/info/EditInfoPage",
+    "pages/info/UpdatePasswordPage",
+    "pages/KnowledgePage",
+    "pages/KnowledgeInfoPage",
+    "pages/info/finance/ExpertQustionAllPage",
+    "pages/info/expert/AnswerQuestionaPage"
   ]
 }
