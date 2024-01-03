@@ -1,8 +1,8 @@
 import router from '@ohos.router';
-import { baseUrl } from '../../api/BaseData';
-import { getLocation, getMyIP } from '../../api/CityApi';
-import  {HttpManager} from '../../util/HttpManager'
-import { RequestMethod } from '../../util/RequestOption';
+import { baseUrl } from '../api/BaseData';
+import { getLocation, getMyIP } from '../api/CityApi';
+import  {HttpManager} from '../util/HttpManager'
+import { RequestMethod } from '../util/RequestOption';
 @Preview
 @Entry
 @Component

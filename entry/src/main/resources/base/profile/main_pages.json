@@ -12,6 +12,8 @@
     "pages/GoodInfoPage",
     "pages/UserInfoPage",
     "pages/info/EditInfoPage",
-    "pages/info/UpdatePasswordPage"
+    "pages/info/UpdatePasswordPage",
+    "pages/KnowledgePage",
+    "pages/KnowledgeInfoPage"
   ]
 }
