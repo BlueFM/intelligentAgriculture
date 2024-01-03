@@ -1,4 +1,5 @@
 import { baseUrl } from '../../api/BaseData';
+import { getLocation, getMyIP } from '../../api/CityApi';
 import  {HttpManager} from '../../util/HttpManager'
 import { RequestMethod } from '../../util/RequestOption';
 @Preview
@@ -11,6 +12,7 @@ export struct Home {
   @State pageNum: number = 1;
   @State cityName: string = ''
   @State word: string = '';
+
 
   //获取所有商品的信息
   getAllGoods(pn:number) {
@@ -58,9 +60,15 @@ export struct Home {
   showTitle(title){
     return title.length>15?title.substring(0,15):title
   }
-  aboutToAppear() {
+  async aboutToAppear() {
     this.initializeImageData()
     this.getAllGoods(1);
+    let resultIP = await getMyIP()
+    // 返回值带换行 需要删除
+    let ip =resultIP.result.toString().replace(/\n/g, "");
+    let resultLatLng = await getLocation(ip)
+    let cityName = JSON.parse(resultLatLng.result.toString()).result.cityName
+    this.cityName =cityName
   }
   initializeImageData(){
     this.imageSrc=[
@@ -76,7 +84,7 @@ export struct Home {
     Column() {
       Row() {
         Row() {
-          Text("兰州")
+          Text(this.cityName)
             .padding({left:5})
           Text().height(35).border({ width: 1, color: '#C6C9CD' })
             .margin({ left: 5, right: 5 })
@@ -98,7 +106,6 @@ export struct Home {
         }.backgroundColor(Color.White).width('95%')
         .margin(10).borderRadius(5)
       }
-
       /*图片轮播*/
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Swiper() {
@@ -109,8 +116,6 @@ export struct Home {
         .loop(true)
         .duration(1000)
       }.width('95%').height(150).margin({ right: 20, left: 20 })
-
-
       /*菜单*/
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
         Column() {
@@ -141,8 +146,6 @@ export struct Home {
 
         })
       }.margin({ top: 20, bottom: 20 })
-
-
       /*供需信息*/
       if(this.goodsSrc.length>0){
         Scroll(this.scroller) {
