@@ -9,6 +9,9 @@
     "pages/LoginPage",
     "pages/RegPage",
     "pages/GoodsPage",
-    "pages/GoodInfoPage"
+    "pages/GoodInfoPage",
+    "pages/UserInfoPage",
+    "pages/info/EditInfoPage",
+    "pages/info/UpdatePasswordPage"
   ]
 }

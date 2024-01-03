@@ -1,4 +1,3 @@
-
 import router from '@ohos.router';
 import { baseUrl } from '../../api/BaseData';
 import { getInfo } from '../../api/LoginApi';
@@ -47,7 +46,14 @@ export struct MyInfo {
               Row(){
                 Text('修改资料').height(30).fontSize(12).fontColor('#FFFFFF').margin({right:5})
                 Image($r('app.media.chevron_right')).width(20).height(20)
+
               }
+              .onClick(()=>{
+                router.pushUrl({
+                  url:'pages/UserInfoPage',
+                  params:{info:JSON.stringify(this.info)}
+                })
+              })
             }else{
               Text('登  录').fontSize(18).fontColor('#FFFFFF').fontWeight(700).height(25)
                 .onClick(()=>{
