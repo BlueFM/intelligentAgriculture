@@ -2,6 +2,8 @@
   "src": [
     "pages/Index",
     "pages/login",
-    "pages/signUp"
+    "pages/GoodsInfo",
+    "pages/buy",
+    "pages/buyResult"
   ]
 }
