@@ -2,6 +2,7 @@ import router from '@ohos.router'
 import http from '@ohos.net.http';
 import { baseUrl } from '../api/BaseData';
 import { getGoods } from '../api/GoodsApi';
+import promptAction from '@ohos.promptAction';
 
 @Entry
 @Component
@@ -55,6 +56,7 @@ struct GoodsPage {
                   .width('100%')
                   .height(160)
                   .borderRadius(10)
+                  // .onClick(() => {promptAction.showToast({ message: " asdasd"})})
                 Flex({ direction: FlexDirection.Column }) {
                   Text(`[${item.ownName}]`).margin({ right: 5 })
                   Text(`${item.content}`).height(30).lineHeight(30)
