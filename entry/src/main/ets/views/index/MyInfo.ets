@@ -105,7 +105,15 @@ export struct MyInfo {
 
             Text('我买的').fontColor('#666666').fontSize(14).height(25)
 
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/MyBuysPage'})
+            }
+
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
           //4
           Column(){
@@ -113,7 +121,14 @@ export struct MyInfo {
 
             Text('我卖的').fontColor('#666666').fontSize(14).height(25)
 
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/MySellsPage'})
+            }
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
         }.width(351).height(90).backgroundColor('#FFFFFF').margin({top:-40,left:12,right:12})
         .borderRadius(10).shadow({radius:4,color:'#EBEBEB',offsetX:0,offsetY:2})

@@ -23,7 +23,8 @@
     "pages/BuyResultPage",
     "pages/info/MyQuestionPage",
     "pages/info/MyReservePage",
-    "pages/info/MyReserveInfoPage"
-
+    "pages/info/MyReserveInfoPage",
+    "pages/info/MyBuysPage",
+    "pages/info/MySellsPage"
   ]
 }
