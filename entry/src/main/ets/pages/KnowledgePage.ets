@@ -1,9 +1,8 @@
 import router from '@ohos.router';
-import promptAction from '@ohos.promptAction';
-import { baseUrl } from '../../api/BaseData';
-import { getLocation, getMyIP } from '../../api/CityApi';
-import  {HttpManager} from '../../util/HttpManager'
-import { RequestMethod } from '../../util/RequestOption';
+import { baseUrl } from '../api/BaseData';
+import { getLocation, getMyIP } from '../api/CityApi';
+import  {HttpManager} from '../util/HttpManager'
+import { RequestMethod } from '../util/RequestOption';
 @Preview
 @Entry
 @Component
@@ -152,11 +151,7 @@ export struct Home {
           Image($r('app.media.icon4')).width(70).margin({ bottom: 10 })
           Text('专家指导').fontSize(14)
         }.onClick(() => {
-          if(globalThis.token){
-            router.pushUrl({url:"pages/ExpertPage"})
-          }else{
-            promptAction.showToast({ message: "请先登录！", duration: 2000 })
-          }
+
         })
       }.margin({ top: 20, bottom: 20 })
       /*供需信息*/
