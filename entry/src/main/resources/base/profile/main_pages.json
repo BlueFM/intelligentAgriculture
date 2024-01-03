@@ -4,6 +4,9 @@
     "pages/login",
     "pages/GoodsInfo",
     "pages/buy",
-    "pages/buyResult"
+    "pages/buyResult",
+    "pages/Index",
+    "pages/LoginPage",
+    "pages/RegPage"
   ]
 }

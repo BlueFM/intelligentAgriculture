@@ -20,7 +20,7 @@ export function getLocation(ip:string){
         'x-forwarded-for':`${ip}`
       },
       extraData:{
-        ip: "124.152.254.98"
+        ip
       }
     })
 }

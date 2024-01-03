@@ -1,6 +1,7 @@
 
 import router from '@ohos.router';
 import { baseUrl } from '../../api/BaseData';
+import { getInfo } from '../../api/LoginApi';
 @Preview
 @Entry
 @Component
@@ -13,6 +14,15 @@ export struct MyInfo {
     if(globalThis.info){
       this.info = globalThis.info
       this.role =this.info.role
+    }
+    else if(globalThis.token){
+      getInfo().then((res)=>{
+        let resData = JSON.parse(res.result.toString())
+        this.info = resData.data
+        this.role =this.info.role
+        globalThis.info = resData.data
+
+      })
     }
   }
 
@@ -37,11 +47,12 @@ export struct MyInfo {
               Row(){
                 Text('修改资料').height(30).fontSize(12).fontColor('#FFFFFF').margin({right:5})
                 Image($r('app.media.chevron_right')).width(20).height(20)
-              }.onClick(()=>{
-                router.pushUrl({url:'pages/UserInfoPage',params:{info:JSON.stringify(this.info)}})
-              })
+              }
             }else{
               Text('登  录').fontSize(18).fontColor('#FFFFFF').fontWeight(700).height(25)
+                .onClick(()=>{
+                  router.pushUrl({url:"pages/LoginPage"})
+                })
             }
           }.margin({left:17}).justifyContent(FlexAlign.SpaceBetween).flexGrow(1)
         }.width('100%').padding({left:24,right:24}).height(67).margin({top:20})
