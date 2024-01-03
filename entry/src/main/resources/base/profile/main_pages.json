@@ -8,6 +8,7 @@
     "pages/Index",
     "pages/LoginPage",
     "pages/RegPage",
-    "pages/GoodsPage"
+    "pages/GoodsPage",
+    "pages/GoodInfoPage"
   ]
 }

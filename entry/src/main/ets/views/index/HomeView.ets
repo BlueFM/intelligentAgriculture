@@ -188,8 +188,11 @@ export struct Home {
               .borderColor('#ffffff')
               .margin(5)
               .padding(10)
-              .onClick(() => {
-
+              .onClick(()=>{
+                router.pushUrl({
+                  url: 'pages/GoodsInfoPage',
+                  params: { 'info': item }
+                })
               })
             }, item => item)
           }.width('100%')
