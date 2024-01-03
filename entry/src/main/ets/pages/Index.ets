@@ -17,9 +17,11 @@ struct Index {
   };
   build() {
   Row(){
+
     Tabs({index: this.currentIndex, controller: this.tabsController, barPosition: BarPosition.End}){
       TabContent(){
         HomePage();
+
       }.tabBar(this.tabBuilder("Home",0,$r('app.media.home3'), $r('app.media.home1')));
       TabContent(){
         SearchPage();

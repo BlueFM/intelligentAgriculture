@@ -70,10 +70,12 @@ struct Login {
                 const promise = login(this.username,this.pwd);
                 promise.then((res) => {
                   const resp = JSON.parse(res.result.toString());
-                  if (resp.code == 20000){
+                  if (resp.code === 20000){
                     globalThis.token = resp.data;
+                    promptAction.showToast({message: globalThis.token});
                    }
-                  router.back();
+                  router.replaceUrl({url:'pages/Index'});
+                  // router.back()
 
                 }).catch(err => {
                   promptAction.showToast({message: JSON.stringify(err)})
