@@ -218,7 +218,13 @@ export struct MyInfo {
               Image($r('app.media.map_pin')).width(20).height(20).margin({right:10})
               Text('收货地址').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/ShowAddressPage',params:{type:'goods'}})
+              }
+            }).width('100%').height(55).padding({left:20,right:20})
           }
         }.backgroundColor('#ffffff')
         .divider({ strokeWidth: 1, color: '#f1f1f1', startMargin: 0, endMargin: 0 }) // 每行之间的分界线
@@ -291,7 +297,12 @@ export struct MyInfo {
             Image($r('app.media.chevron_right')).width(16).width(16)
           }.width('100%').height(55).padding({left:20,right:20})
           .onClick(()=>{
-            router.pushUrl({url:'pages/finance/RecommendRzrPage'})
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/finance/RecommendRzrPage'})
+            }
+
           })
         }
         ListItem(){
