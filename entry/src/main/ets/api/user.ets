@@ -14,4 +14,7 @@ function register(nickName:String,password:String,username:String)
   return toRequest(url,{method:http.RequestMethod.POST,extraData:{avatar:"rongxiaotong.gif",nickName,password,username}})
 }
 
+
 export {login,register}
+
+
