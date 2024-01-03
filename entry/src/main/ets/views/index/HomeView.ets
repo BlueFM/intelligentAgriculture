@@ -1,3 +1,5 @@
+import router from '@ohos.router';
+import promptAction from '@ohos.promptAction';
 import { baseUrl } from '../../api/BaseData';
 import { getLocation, getMyIP } from '../../api/CityApi';
 import  {HttpManager} from '../../util/HttpManager'
@@ -64,7 +66,6 @@ export struct Home {
     this.initializeImageData()
     this.getAllGoods(1);
     let resultIP = await getMyIP()
-    // 返回值带换行 需要删除
     let ip =resultIP.result.toString().replace(/\n/g, "");
     let resultLatLng = await getLocation(ip)
     let cityName = JSON.parse(resultLatLng.result.toString()).result.cityName
@@ -122,28 +123,40 @@ export struct Home {
           Image($r('app.media.image')).width(70).margin({ bottom: 10 })
           Text('商品货源').fontSize(14)
         }.onClick(() => {
-
+          router.pushUrl({
+            url:'pages/GoodsPage',
+            params:{
+              type:'goods'
+            }} )
         })
 
         Column() {
           Image($r('app.media.icon2')).width(70).margin({ bottom: 10 })
           Text('求购需求').fontSize(14)
         }.onClick(() => {
-
+          router.pushUrl({
+            url:'pages/GoodsPage',
+            params:{
+              type:'needs'
+            }} )
         })
 
         Column() {
           Image($r('app.media.icon3')).width(70).margin({ bottom: 10 })
           Text('农业知识').fontSize(14)
         }.onClick(() => {
-
+          router.pushUrl({url:"pages/KnowledgePage"})
         })
 
         Column() {
           Image($r('app.media.icon4')).width(70).margin({ bottom: 10 })
           Text('专家指导').fontSize(14)
         }.onClick(() => {
-
+          if(globalThis.token){
+            router.pushUrl({url:"pages/ExpertPage"})
+          }else{
+            promptAction.showToast({ message: "请先登录！", duration: 2000 })
+          }
         })
       }.margin({ top: 20, bottom: 20 })
       /*供需信息*/
@@ -179,8 +192,11 @@ export struct Home {
               .borderColor('#ffffff')
               .margin(5)
               .padding(10)
-              .onClick(() => {
-
+              .onClick(()=>{
+                router.pushUrl({
+                  url: 'pages/GoodsInfoPage',
+                  params: { 'info': item }
+                })
               })
             }, item => item)
           }.width('100%')

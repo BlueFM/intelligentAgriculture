@@ -5,8 +5,12 @@
     "pages/GoodsInfo",
     "pages/buy",
     "pages/buyResult",
-    "pages/Index",
     "pages/LoginPage",
-    "pages/RegPage"
+    "pages/RegPage",
+    "pages/expert/KnowledgeInfoPage",
+    "pages/expert/ExpertQuestionPage",
+    "pages/expert/ExpertReservePage",
+    "pages/QuestionInfoPage",
+    "pages/ExpertPage"
   ]
 }
