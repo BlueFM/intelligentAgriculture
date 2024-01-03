@@ -1,0 +1,1 @@
+export const baseUrl:string="http://10.0.20.114:9090";
