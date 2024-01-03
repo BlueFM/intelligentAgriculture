@@ -1,6 +1,9 @@
 {
   "src": [
     "pages/Index",
-    "pages/login"
+    "pages/login",
+    "pages/GoodsInfo",
+    "pages/buy",
+    "pages/buyResult"
   ]
 }

@@ -1,6 +1,5 @@
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-
 import {login}  from '../api/user'
 
 @Entry
@@ -69,9 +68,11 @@ struct Login {
               .onClick(() =>{
                 // 获取token
                 const promise = login(this.username,this.pwd);
-                promise.then((rst) => {
-                  const resp = JSON.parse(rst.result.toString());
-                  globalThis.token = resp.data;
+                promise.then((res) => {
+                  const resp = JSON.parse(res.result.toString());
+                  if (resp.code == 20000){
+                    globalThis.token = resp.data;
+                   }
                   router.back();
 
                 }).catch(err => {
