@@ -1,7 +1,7 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction'
 import http from '@ohos.net.http';
-import { baseUrl } from '../api/BaseData';
+import { baseUrl, imgUrl } from '../api/BaseData';
 import { addToCar } from '../api/CarApi';
 @Entry
 @Component
@@ -23,7 +23,7 @@ struct GoodInfoPage {
       }.height(60).width('100%').margin({top:10}).zIndex(1)
 
       Column(){
-        Image(`${baseUrl}/file/${this.info.picture}`)
+        Image(`${imgUrl}/file/${this.info.picture}`)
           .width('100%')
           .height(300)
           .margin({bottom:10})

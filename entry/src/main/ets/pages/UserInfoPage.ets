@@ -3,7 +3,7 @@ import fs from '@ohos.file.fs'
 import common from '@ohos.app.ability.common';
 import picker from '@ohos.file.picker';
 import request from '@ohos.request';
-import { baseUrl } from '../api/BaseData';
+import { baseUrl, imgUrl } from '../api/BaseData';
 import { editUserInfo } from '../api/UserApi';
 
 //获取应用文件路径
@@ -102,11 +102,11 @@ struct UserInfoPage {
   }
   aboutToAppear() {
     this.info = globalThis.info
-    this.resultMsg=`${baseUrl}/file/${this.info.avatar}`
+    this.resultMsg=`${imgUrl}/file/${this.info.avatar}`
   }
   onPageShow(){
     this.info = globalThis.info
-    this.resultMsg=`${baseUrl}/file/${this.info.avatar}`
+    this.resultMsg=`${imgUrl}/file/${this.info.avatar}`
   }
 
   build() {

@@ -1,7 +1,7 @@
 import router from '@ohos.router'
 import http from '@ohos.net.http';
 import promptAction from '@ohos.promptAction';
-import { baseUrl } from '../../api/BaseData';
+import { baseUrl, imgUrl } from '../../api/BaseData';
 
 @Entry
 @Component
@@ -52,14 +52,14 @@ struct KnowledgeInfoPage {
       .alignItems(VerticalAlign.Center)
 
       if (this.info.picPath.lastIndexOf('.mp4') == -1) {
-        Image(`${baseUrl}/file/${this.info.picPath}`)
+        Image(`${imgUrl}/file/${this.info.picPath}`)
           .width('100%')
           .height(200)
           .margin({ bottom: 10 })
       }
       if (this.info.picPath.lastIndexOf('.mp4') >= 0) {
         Video({
-          src: `${baseUrl}/file/${this.info.picPath}`,
+          src: `${imgUrl}/file/${this.info.picPath}`,
           previewUri:$r('app.media.prevideo'),
           controller: this.controller
         })

@@ -1,6 +1,6 @@
 import router from '@ohos.router';
 import http from '@ohos.net.http';
-import { baseUrl } from '../../api/BaseData';
+import { baseUrl, imgUrl } from '../../api/BaseData';
 import { getGoods, getGoodsByParam } from '../../api/GoodsApi';
 
 @Preview
@@ -73,7 +73,7 @@ export struct SearchView {
         Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
           ForEach(this.goodsSrc, (item, i) => {
             Row() {
-              Image(`${baseUrl}/file/${item.picture}`)
+              Image(`${imgUrl}/file/${item.picture}`)
                 .width(100).height(100).borderRadius(10).margin({ right: 5 })
               Flex({ direction: FlexDirection.Column }) {
                 Row() {

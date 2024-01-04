@@ -1,6 +1,6 @@
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-import { baseUrl } from '../../api/BaseData';
+import { baseUrl, imgUrl } from '../../api/BaseData';
 import { getLocation, getMyIP } from '../../api/CityApi';
 import  {HttpManager} from '../../util/HttpManager'
 import { RequestMethod } from '../../util/RequestOption';
@@ -165,7 +165,7 @@ export struct Home {
           Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
             ForEach(this.goodsSrc, (item, i) => {
               Column() {
-                Text(`${baseUrl}/file/${item.picture}`)
+                Image(`${imgUrl}/file/${item.picture}`)
                   .height(100).width('100%')
                 // Image(`${baseUrl}/file/${item.picture}`)
                 //   .height(100).width('100%')

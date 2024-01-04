@@ -1,7 +1,7 @@
 
 import {getKnowledge} from '../api/KnowledgeApi'
 import router from '@ohos.router'
-import { baseUrl } from '../api/BaseData';
+import { baseUrl, imgUrl } from '../api/BaseData';
 @Entry
 @Component
 struct KnowledgePage{
@@ -49,7 +49,7 @@ struct KnowledgePage{
           Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
             ForEach(this.knowledgeSrc, (item, i) => {
               Column() {
-                Image(`${baseUrl}/file/${item.picture}`)
+                Image(`${imgUrl}/file/${item.picture}`)
                   .width('100%')
                   .height(160)
                   .borderRadius(10)
