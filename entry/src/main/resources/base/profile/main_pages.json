@@ -16,7 +16,7 @@
     "pages/KnowledgePage",
     "pages/KnowledgeInfoPage",
     "pages/info/finance/ExpertQustionAllPage",
-    "pages/info/expert/AnswerQuestionaPage"
+    "pages/info/expert/AnswerQuestionaPage",
     "pages/signUp",
     "pages/UserInfoPage",
     "pages/BuyResultPage",
