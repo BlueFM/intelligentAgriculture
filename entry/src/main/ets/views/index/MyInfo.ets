@@ -183,7 +183,6 @@ export struct MyInfo {
           })
           .justifyContent(FlexAlign.Center)
           Blank()
-
         }.width(351).height(90).backgroundColor('#FFFFFF').margin({top:-40,left:12,right:12})
         .borderRadius(10).shadow({radius:4,color:'#EBEBEB',offsetX:0,offsetY:2})
         .justifyContent(FlexAlign.SpaceAround)
@@ -259,7 +258,14 @@ export struct MyInfo {
               Image($r('app.media.fabu')).width(20).height(20).margin({right:10})
               Text('发布知识').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/info/expert/ExpertKnowledgeEditPage',params:{type:'add'}})
+              }
+            })
+            .width('100%').height(55).padding({left:20,right:20})
           }
           ListItem(){
             //4

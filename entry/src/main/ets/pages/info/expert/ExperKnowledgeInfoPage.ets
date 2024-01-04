@@ -1,6 +1,6 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
-import { baseUrl, imgUrl } from '../../../api/BaseData';
+import { baseUrl } from '../../../api/BaseData';
 import { deleteKnowledge } from '../../../api/KnowledgeApi';
 
 @Entry
@@ -58,14 +58,14 @@ struct ExperKnowledgeInfoPage {
       .alignItems(VerticalAlign.Center)
 
       if (this.info.picPath.lastIndexOf('.mp4') == -1) {
-        Image(`${imgUrl}/file/${this.info.picPath}`)
+        Image(`${baseUrl}/file/${this.info.picPath}`)
           .width('100%')
           .height(200)
           .margin({ bottom: 10 })
       }
       if (this.info.picPath.lastIndexOf('.mp4') >= 0) {
         Video({
-          src: `${imgUrl}/file/${this.info.picPath}`,
+          src: `${baseUrl}/file/${this.info.picPath}`,
           controller: this.controller
         })
           .width('100%')
@@ -79,7 +79,7 @@ struct ExperKnowledgeInfoPage {
       Row() {
         Button("修改").width(80).borderRadius(10).margin({right:20})
           .onClick(()=>{
-            router.replaceUrl({url:'pages/info/expert/ExpertKnowledgeEditPage',params:{info:this.info}})
+            router.replaceUrl({url:'pages/info/expert/ExpertKnowledgeEditPage',params:{type:'edit',info:this.info}})
           })
         Button("删除").width(80).borderRadius(10).onClick(()=>{
           AlertDialog.show({

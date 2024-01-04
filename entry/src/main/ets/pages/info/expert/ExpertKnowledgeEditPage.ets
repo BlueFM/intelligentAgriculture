@@ -6,7 +6,7 @@ import request from '@ohos.request';
 import fs from '@ohos.file.fs'
 import common from '@ohos.app.ability.common';
 import { baseUrl } from '../../../api/BaseData';
-import { updateKnowledge } from '../../../api/KnowledgeApi';
+import { releaseKnowledge, updateKnowledge } from '../../../api/KnowledgeApi';
 
 //获取应用文件路径
 let context = getContext(this) as common.UIAbilityContext;
@@ -16,9 +16,10 @@ let context = getContext(this) as common.UIAbilityContext;
 struct ExpertKnowledgeEditPage {
   @State info:any={};
   @State img:string=''
+  @State headTitle:string=''
   @State type: string = ''
   @State content: string = ''
-  @State picture: string = ''
+  @State picPath: string = ''
   @State title: string = ''
   @State price: string = ''
   @State isShow: boolean = false
@@ -90,7 +91,8 @@ struct ExpertKnowledgeEditPage {
             let begin = str.indexOf("filename=")+"filename=".length;
             let end = str.indexOf("\\r\\n",begin)
             let fileName = str.substring(begin, end);
-            this.picture=fileName;
+            this.picPath=fileName;
+            this.info.picPath=fileName
           })
 
         })
@@ -101,20 +103,23 @@ struct ExpertKnowledgeEditPage {
       console.info("===============", `xxInvokeuploadFilefailed,codeis${err.code},messageis${err.message}`);
     }
   }
-  //获取商品类型
   aboutToAppear() {
-    this.info = router.getParams()['info'];
-    console.info("================info",JSON.stringify(this.info))
-    this.img=`${baseUrl}/file/${this.info.picPath}`;
-    console.info("==================img",this.img)
-    console.info("==================img",`${baseUrl}/file/${this.info.picPath}`)
+    this.type = router.getParams()['type']
+    if(this.type=='edit'){
+      this.info = router.getParams()['info'];
+      this.img=`${baseUrl}/file/${this.info.picPath}`;
+      this.headTitle = '修改信息'
+    }else{
+      this.headTitle = '添加知识'
+    }
+
   }
 
   build() {
     Stack() {
       Column() {
         Stack({ alignContent: Alignment.Start }) {
-          Text('修改信息')
+          Text(this.headTitle)
             .width('100%')
             .height(60)
             .fontSize(20)
@@ -197,13 +202,25 @@ struct ExpertKnowledgeEditPage {
               .width('100%')
               .borderRadius(20)
               .onClick(() => {
-                updateKnowledge(this.info).then(rst=>{
-                  let data=JSON.parse(rst.result.toString());
-                  promptAction.showToast({
-                    message: data.message,
-                    duration: 1000,
-                  });
-                })
+                if(this.type == 'edit'){
+                  updateKnowledge(this.info).then(rst=>{
+                    let data=JSON.parse(rst.result.toString());
+                    promptAction.showToast({
+                      message: data.message,
+                      duration: 1000,
+                    });
+                  })
+                }else{
+                  releaseKnowledge(this.info).then(rst=>{
+                    let data=JSON.parse(rst.result.toString());
+                    promptAction.showToast({
+                      message: data.message,
+                      duration: 1000,
+                    });
+                    setTimeout(()=>{router.back()},2000)
+                  })
+                }
+
               })
           }.alignItems(VerticalAlign.Bottom).padding(10).backgroundColor('#ffffff')
           .width('100%')
@@ -214,6 +231,11 @@ struct ExpertKnowledgeEditPage {
       Panel(this.isShow) {
         Column() {
           List() {
+            // ListItem() {
+            //   Row() {
+            //     Text("拍摄")
+            //   }.height(60).width('100%').justifyContent(FlexAlign.Center)
+            // }
 
             ListItem() {
               Row() {
