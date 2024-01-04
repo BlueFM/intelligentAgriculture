@@ -99,7 +99,7 @@ export struct SearchView {
             .borderRadius(10)
             .onClick(() => {
               router.pushUrl({
-                url: 'pages/GoodsInfoPage',
+                url: 'pages/GoodInfoPage',
                 params: { 'info': item }
               })
             })

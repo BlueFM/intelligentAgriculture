@@ -46,30 +46,39 @@ struct KnowledgePage{
 
       Row() {
         Scroll(this.scroller) {
-          Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
+          List() {
             ForEach(this.knowledgeSrc, (item, i) => {
-              Column() {
-                Image(`${imgUrl}/file/${item.picture}`)
-                  .width('100%')
-                  .height(160)
-                  .borderRadius(10)
-                Flex({ direction: FlexDirection.Column }) {
-                  Text(`[${item.ownName}]`).margin({ right: 5 })
-                  Text(`${item.content}`).height(30).lineHeight(30)
-                  // Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-                  //   Text('￥' + item.price).fontColor(Color.Red).height(20).lineHeight(20)
-                  // }
+              ListItem() {
+              Row(){
+              Image(`${imgUrl}/file/${item.picPath}`).width('40%').height(120).margin({right:10})
+                Column(){
+                  Text(`${item.title}`)
+                    .fontFamily("宋体")
+                    .textAlign(TextAlign.Center)
+                    .fontSize(16).fontWeight(700).width('55%').maxLines(1)
+                  Flex({direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceEvenly}){
+
+                    Text(`${item.content}`).maxLines(2).width('100%').lineHeight(20)
+                    Text(`${item.ownName}`).width("100%").textAlign(TextAlign.End)
+                  }.height('60%').width("55%").margin({right:"5%"}).borderWidth(0)
+
+
                 }
-                .padding(5)
+              }.width('100%').height("100%").borderWidth(0)
               }
-              .width('47%')
-              .height(260)
+              .width('100%')
+              .height(120)
               .borderRadius(10)
               .backgroundColor('#ffffff')
               .opacity(0.8)
               .shadow({ radius: 5, color: '#f2f2f2', offsetX: 5, offsetY: 5 })
               .margin(5)
               .padding(10)
+              .onClick(
+                () => {
+                  router.pushUrl({url: 'pages/KnowledgeInfoPage',params: {info: item}})
+                }
+              )
             }, item => item)
           }.width('100%')
         }.scrollable(ScrollDirection.Vertical)

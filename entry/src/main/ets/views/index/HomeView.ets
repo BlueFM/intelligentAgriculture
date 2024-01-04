@@ -167,9 +167,7 @@ export struct Home {
               Column() {
                 Image(`${imgUrl}/file/${item.picture}`)
                   .height(100).width('100%')
-                  .onClick( () => {
-                    router.pushUrl({url:"pages/GoodInfoPage", params: {info:item}})
-                  })
+
                 Column(){
                   Row(){
                     Image(item.type == 'goods' ? $r('app.media.gong') : $r('app.media.xu')).width(30).height(30)
@@ -197,7 +195,7 @@ export struct Home {
               .padding(10)
               .onClick(()=>{
                 router.pushUrl({
-                  url: 'pages/GoodsInfoPage',
+                  url: 'pages/GoodInfoPage',
                   params: { 'info': item }
                 })
               })
