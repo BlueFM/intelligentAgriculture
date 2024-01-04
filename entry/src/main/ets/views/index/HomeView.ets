@@ -13,7 +13,7 @@ export struct Home {
   @State goodsSrc: Array<any> = [];
   @State pageNum: number = 1;
   @State cityName: string = ''
-  @State word: string = '';
+  @State word: string = '兰州';
 
 
   //获取所有商品的信息
