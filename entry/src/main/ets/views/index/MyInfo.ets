@@ -302,7 +302,7 @@ export struct MyInfo {
               Text('商品货源').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
             }.onClick(()=>{
-              router.pushUrl({url:'pages/GoodsPage',params:{type:'goods'}})
+              router.pushUrl({url:'pages/MyGoodsPage',params:{type:'goods'}})
             })
             .width('100%').height(55).padding({left:20,right:20})
           }
@@ -313,7 +313,7 @@ export struct MyInfo {
               Text('求购需求').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
             }.onClick(()=>{
-              router.pushUrl({url:'pages/GoodsPage',params:{type:'needs'}})
+              router.pushUrl({url:'pages/MyGoodsPage',params:{type:'needs'}})
             })
             .width('100%').height(55).padding({left:20,right:20})
           }
