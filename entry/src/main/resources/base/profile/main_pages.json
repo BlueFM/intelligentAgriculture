@@ -32,9 +32,12 @@
     "pages/info/expert/ExpertKnowledgeEditPage",
     "pages/index/admin/ShowUsersPage",
     "pages/index/admin/ShowUserInfoPage",
-
-
     "pages/info/expert/SearchExpertInfoPage",
-    "pages/MyGoodsPage"
+    "pages/MyGoodsPage",
+    "pages/ReleaseGoodsPage",
+    "pages/ShowAddressPage",
+    "pages/EditAddressPage",
+    "pages/info/MyBuysPage",
+    "pages/info/MySellsPage"
   ]
 }

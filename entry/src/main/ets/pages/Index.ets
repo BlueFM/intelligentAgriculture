@@ -6,6 +6,12 @@ import { SearchView } from '../views/index/SearchView';
 @Entry
 @Component
 struct Index {
+
+  onBackPress(){
+
+    return true;
+  }
+
   @State currentIndex: number = 0;
   private tabsController: TabsController = new TabsController()
   @Builder TabBuilder(title: string, targetIndex: number, selectedImg: Resource, normalImg: Resource) {

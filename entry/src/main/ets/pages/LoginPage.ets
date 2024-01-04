@@ -66,7 +66,7 @@ struct LoginPage {
           Text('融销通').fontColor('#a4cd3d').fontSize(24).margin(15)
           Row() {
             Text('账 号:').fontSize(14).margin({ left: 15 }).fontColor(Color.Grey)
-            TextInput({ placeholder: '请输入账号',text:'' })
+            TextInput({ placeholder: '请输入账号',text:'user' })
               .borderWidth(0)
               .backgroundColor(Color.Transparent)
               .flexGrow(1)
@@ -84,7 +84,7 @@ struct LoginPage {
 
           Row() {
             Text('密 码:').fontSize(14).margin({ left: 15 }).fontColor(Color.Grey)
-            TextInput({ placeholder: '请输入密码',text:''})
+            TextInput({ placeholder: '请输入密码',text:'user123'})
               .borderWidth(0)
               .backgroundColor(Color.Transparent)
               .flexGrow(1)

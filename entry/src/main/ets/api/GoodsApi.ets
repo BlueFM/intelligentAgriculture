@@ -42,3 +42,40 @@ export function getMyGoods(type:string,pn:number){
       }
     })
 }
+
+//发布求购需求
+export function addNeeds(item:any){
+  return HttpManager.getInstance()
+    .request({
+      url:`${baseUrl}/order`,
+      method:RequestMethod.POST,
+      header: {
+        Authorization: globalThis.token
+      },
+      extraData: {
+        content: item.content,
+        picture: item.picture,
+        price: item.price,
+        title: item.title,
+        type: item.type
+      }
+    })
+}
+//修改求购需求
+export function editNeeds(info:any){
+  return HttpManager.getInstance()
+    .request({
+      url:`${baseUrl}/order/${info.orderId}`,
+      method:RequestMethod.PUT,
+      header: {
+        Authorization: globalThis.token
+      },
+      extraData:{
+        content:info.content,
+        order_id:info.order_id,
+        picture:info.picture,
+        price:info.price,
+        title:info.title
+      }
+    })
+}
