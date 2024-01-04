@@ -44,7 +44,7 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('真实姓名:').width(100)
-              TextInput({text:this.expert.realName}).onChange(v=>{
+              TextInput({placeholder:'输入姓名',text:"123"}).onChange(v=>{
                 this.expert.realName=v;
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
@@ -53,7 +53,7 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('手机号码:').width(100)
-              TextInput({text:this.expert.phone}).onChange(v=>{
+              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
                 this.expert.phone=v;
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
@@ -62,7 +62,7 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('从事专业:').width(100)
-              TextInput({text:this.expert.profession}).onChange(v=>{
+              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
                 this.expert.profession=v;
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
@@ -71,7 +71,7 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('职位:').width(100)
-              TextInput({text:this.expert.position}).onChange(v=>{
+              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
                 this.expert.position=v;
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
@@ -79,7 +79,7 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('所属单位:').width(100)
-              TextInput({text:this.expert.belong}).onChange(v=>{
+              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
                 this.expert.belong=v;
               }).borderRadius(5).height(40).width(250)
             }.width('100%')

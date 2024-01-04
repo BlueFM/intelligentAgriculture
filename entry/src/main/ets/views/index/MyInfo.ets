@@ -1,7 +1,7 @@
 
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-import { baseUrl } from '../../api/BaseData';
+import { baseUrl, imgUrl } from '../../api/BaseData';
 import { getInfo } from '../../api/LoginApi';
 @Preview
 @Entry
@@ -35,7 +35,7 @@ export struct MyInfo {
         }.width('100%')
         Row(){
           if(this.info){
-            Image(`${baseUrl}/file/${this.info.avatar}`).width(70).height(70).borderRadius(35)
+            Image(`${imgUrl}/file/${this.info.avatar}`).width(70).height(70).borderRadius(35)
           }else{
             Image($r('app.media.nologin')).width(70).height(70).borderRadius(35)
           }
