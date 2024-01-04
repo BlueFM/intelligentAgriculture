@@ -26,7 +26,10 @@
     "pages/info/MyReserveInfoPage",
     "pages/info/finance/ExpertQustionAllPage",
     "pages/info/expert/AnswerQuestionaPage",
-    "pages/info/expert/ExpertReserveAllPage"
+    "pages/info/expert/ExpertReserveAllPage",
+    "pages/info/expert/ExpertKnowledgePage",
+    "pages/info/expert/ExperKnowledgeInfoPage",
+    "pages/info/expert/ExpertKnowledgeEditPage"
 
 
   ]

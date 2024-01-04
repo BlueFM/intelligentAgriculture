@@ -162,7 +162,13 @@ export struct MyInfo {
           Column(){
             Image($r('app.media.car')).width(30).height(30)
             Text('我的知识').fontColor('#666666').fontSize(14).height(25)
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/expert/ExpertKnowledgePage'})
+            }
+          }).justifyContent(FlexAlign.Center)
           Blank()
           //4
           Column(){
