@@ -23,7 +23,7 @@ struct GoodInfoPage {
       }.height(60).width('100%').margin({top:10}).zIndex(1)
 
       Column(){
-        Image(`${imgUrl}/file/${this.info.picture}`)
+        Image(this.info.picture == undefined ? $r('app.media.Bag'):`${imgUrl}/file/${this.info.picture}`)
           .width('100%')
           .height(300)
           .margin({bottom:10})

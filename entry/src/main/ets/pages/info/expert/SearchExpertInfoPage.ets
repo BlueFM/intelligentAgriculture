@@ -1,11 +1,21 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction'
 import { searchExpert, updateExpert } from '../../../api/ExpertApi'
+
+class Expert{
+  realName: string
+  phone: string
+  profession: string
+  position: string
+  belong: string
+
+}
+
 @Preview
 @Entry
 @Component
 struct SearchExpertInfoPage {
-  @State expert: any = {}
+  @State expert: Expert = new Expert()
 
   searchExpert() {
     searchExpert().then(rst => {
@@ -44,8 +54,8 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('真实姓名:').width(100)
-              TextInput({placeholder:'输入姓名',text:"123"}).onChange(v=>{
-                this.expert.realName=v;
+              TextInput({placeholder:'输入姓名',text:"123"}).onSubmit(v=>{
+                this.expert.realName=v.toString();
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
           }.padding({ left: 20, right: 20 }).height(80)
@@ -53,8 +63,8 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('手机号码:').width(100)
-              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
-                this.expert.phone=v;
+              TextInput({placeholder:'输入',text:"123"}).onSubmit(v=>{
+                this.expert.phone=v.toString();
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
           }.padding({ left: 20, right: 20 }).height(80)
@@ -62,8 +72,8 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('从事专业:').width(100)
-              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
-                this.expert.profession=v;
+              TextInput({placeholder:'输入',text:"123"}).onSubmit(v=>{
+                this.expert.profession=v.toString();
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
           }.padding({ left: 20, right: 20 }).height(80)
@@ -71,16 +81,16 @@ struct SearchExpertInfoPage {
           ListItem() {
             Row() {
               Text('职位:').width(100)
-              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
-                this.expert.position=v;
+              TextInput({placeholder:'输入',text:"123"}).onSubmit(v=>{
+                this.expert.position=v.toString();
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
           }.padding({ left: 20, right: 20 }).height(80)
           ListItem() {
             Row() {
               Text('所属单位:').width(100)
-              TextInput({placeholder:'输入',text:"123"}).onChange(v=>{
-                this.expert.belong=v;
+              TextInput({placeholder:'输入',text:"123"}).onSubmit(v=>{
+                this.expert.belong=v.toString();
               }).borderRadius(5).height(40).width(250)
             }.width('100%')
           }.padding({ left: 20, right: 20 }).height(80)

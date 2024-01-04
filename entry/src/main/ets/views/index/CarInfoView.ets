@@ -56,10 +56,10 @@ export struct CarInfo {
       this.goodSrcLength = this.goodsSrc.length
       this.goodsSrc.forEach(item=>{
         let a =item
-        console.log('aaa')
+
       })
       let data  =this.goodsSrc
-      console.log('aaa')
+
     })
 
   }

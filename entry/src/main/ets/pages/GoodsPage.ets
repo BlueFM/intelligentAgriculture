@@ -74,6 +74,9 @@ struct GoodsPage {
               .shadow({ radius: 5, color: '#f2f2f2', offsetX: 5, offsetY: 5 })
               .margin(5)
               .padding(10)
+              .onClick(
+                () => { router.pushUrl({url:'pages/GoodInfoPage', params: {info: item}},)}
+              )
             }, item => item)
           }.width('100%')
         }.scrollable(ScrollDirection.Vertical)

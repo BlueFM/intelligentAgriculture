@@ -18,3 +18,27 @@ export function getGoodsByParam(keyword:string,pn:number){
       method:RequestMethod.GET
     })
 }
+
+//删除求购需求
+export function deleteNeeds(orderId:any){
+  return HttpManager.getInstance()
+    .request({
+      url:`${baseUrl}/order/${orderId}`,
+      method:RequestMethod.DELETE,
+      header: {
+        Authorization: globalThis.token
+      }
+    })
+}
+
+//通过关键字分页查询
+export function getMyGoods(type:string,pn:number){
+  return HttpManager.getInstance()
+    .request({
+      url:`${baseUrl}/order/search/${type}/${pn}`,
+      method:RequestMethod.GET,
+      header: {
+        Authorization: globalThis.token
+      }
+    })
+}
