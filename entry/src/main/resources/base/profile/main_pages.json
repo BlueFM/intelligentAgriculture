@@ -30,7 +30,9 @@
     "pages/info/expert/ExpertKnowledgePage",
     "pages/info/expert/ExperKnowledgeInfoPage",
     "pages/info/expert/ExpertKnowledgeEditPage",
-    "pages/info/expert/SearchExpertInfoPage"
+    "pages/info/expert/SearchExpertInfoPage",
+    "pages/index/admin/ShowUsersPage",
+    "pages/index/admin/ShowUserInfoPage"
 
 
   ]

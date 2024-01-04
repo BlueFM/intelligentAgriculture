@@ -1,7 +1,7 @@
 
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-import { baseUrl, imgUrl } from '../../api/BaseData';
+import { baseUrl } from '../../api/BaseData';
 import { getInfo } from '../../api/LoginApi';
 @Preview
 @Entry
@@ -35,7 +35,7 @@ export struct MyInfo {
         }.width('100%')
         Row(){
           if(this.info){
-            Image(`${imgUrl}/file/${this.info.avatar}`).width(70).height(70).borderRadius(35)
+            Image(`${baseUrl}/file/${this.info.avatar}`).width(70).height(70).borderRadius(35)
           }else{
             Image($r('app.media.nologin')).width(70).height(70).borderRadius(35)
           }
@@ -289,7 +289,11 @@ export struct MyInfo {
               Image($r('app.media.user')).width(20).height(20).margin({right:10})
               Text('用户管理').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }
+            .onClick(()=>{
+              router.pushUrl({url:'pages/index/admin/ShowUsersPage'})
+            })
+            .width('100%').height(55).padding({left:20,right:20})
           }
           ListItem(){
             //4
