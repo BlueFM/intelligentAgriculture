@@ -86,25 +86,3 @@ export function buyGoods(userId:number,total:number,items:any){
       extraData:items
     })
 }
-//购买商品
-export function getMyBuys(){
-  return HttpManager.getInstance()
-    .request({
-      url:`${baseUrl}/order/selectBuys`,
-      method:RequestMethod.GET,
-      header: {
-        Authorization: globalThis.token
-      }
-    })
-}
-//卖出商品
-export function getMySells(){
-  return HttpManager.getInstance()
-    .request({
-      url:`${baseUrl}/order/selectSells`,
-      method:RequestMethod.GET,
-      header: {
-        Authorization: globalThis.token
-      }
-    })
-}

@@ -22,13 +22,7 @@
     "pages/BuyResultPage",
     "pages/info/MyQuestionPage",
     "pages/info/MyReservePage",
-    "pages/info/MyReserveInfoPage",
-    "pages/info/MyBuysPage",
-    "pages/info/MySellsPage",
-    "pages/MyGoodsPage",
-    "pages/ReleaseGoodsPage",
-    "pages/ShowAddressPage",
-    "pages/EditAddressPage",
-    "pages/finance/RecommendRzrPage"
+    "pages/info/MyReserveInfoPage"
+
   ]
 }
