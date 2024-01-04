@@ -301,7 +301,10 @@ export struct MyInfo {
               Image($r('app.media.goods')).width(20).height(20).margin({right:10})
               Text('商品货源').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              router.pushUrl({url:'pages/GoodsPage',params:{type:'goods'}})
+            })
+            .width('100%').height(55).padding({left:20,right:20})
           }
           ListItem(){
             //4
@@ -309,7 +312,10 @@ export struct MyInfo {
               Image($r('app.media.goods')).width(20).height(20).margin({right:10})
               Text('求购需求').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              router.pushUrl({url:'pages/GoodsPage',params:{type:'needs'}})
+            })
+            .width('100%').height(55).padding({left:20,right:20})
           }
         }.backgroundColor('#ffffff')
         .divider({ strokeWidth: 1, color: '#f1f1f1', startMargin: 0, endMargin: 0 }) // 每行之间的分界线
