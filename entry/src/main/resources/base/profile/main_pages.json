@@ -29,7 +29,8 @@
     "pages/info/expert/ExpertReserveAllPage",
     "pages/info/expert/ExpertKnowledgePage",
     "pages/info/expert/ExperKnowledgeInfoPage",
-    "pages/info/expert/ExpertKnowledgeEditPage"
+    "pages/info/expert/ExpertKnowledgeEditPage",
+    "pages/info/expert/SearchExpertInfoPage"
 
 
   ]

@@ -96,7 +96,7 @@ export function deleteExpertReserve(id:string){
   return HttpManager.getInstance()
     .request({
       url:`${baseUrl}/reserve/delete/${id}`,
-      method:RequestMethod.DELETE,
+      method:RequestMethod.GET,
       header:{
         Authorization:globalThis.token
       }
@@ -125,6 +125,36 @@ export function updateReserve(item:any){
         message:item.message,
         answer:item.answer,
         status:item.status
+      }
+    })
+}
+//获取专家信息
+export function searchExpert(){
+  return HttpManager.getInstance()
+    .request({
+      url:`${baseUrl}/user/searchexpert`,
+      method:RequestMethod.GET,
+      header:{
+        Authorization:globalThis.token
+      }
+    })
+}
+//更新专家信息
+export function updateExpert(expert:any){
+  return HttpManager.getInstance()
+    .request({
+      url:`${baseUrl}/user/addUpdexpert`,
+      method:RequestMethod.POST,
+      header:{
+        Authorization:globalThis.token
+      },
+      extraData:{
+        belong:expert.belong,
+        phone:expert.phone,
+        position:expert.position,
+        profession:expert.profession,
+        realName:expert.realName,
+        userName:expert.userName
       }
     })
 }
