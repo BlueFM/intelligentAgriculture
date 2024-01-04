@@ -106,7 +106,15 @@ export struct MyInfo {
 
             Text('我买的').fontColor('#666666').fontSize(14).height(25)
 
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/MyBuysPage'})
+            }
+
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
           //4
           Column(){
@@ -114,7 +122,14 @@ export struct MyInfo {
 
             Text('我卖的').fontColor('#666666').fontSize(14).height(25)
 
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/info/MySellsPage'})
+            }
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
         }.width(351).height(90).backgroundColor('#FFFFFF').margin({top:-40,left:12,right:12})
         .borderRadius(10).shadow({radius:4,color:'#EBEBEB',offsetX:0,offsetY:2})
@@ -138,7 +153,10 @@ export struct MyInfo {
           Column(){
             Image($r('app.media.Clock1')).width(30).height(30)
             Text('我的预约').fontColor('#666666').fontSize(14).height(25)
-          }.justifyContent(FlexAlign.Center)
+          }.onClick(()=>{
+            router.pushUrl({url:"pages/info/expert/ExpertReserveAllPage"})
+          })
+          .justifyContent(FlexAlign.Center)
           Blank()
           //3
           Column(){
@@ -177,7 +195,14 @@ export struct MyInfo {
               Image($r('app.media.user')).width(20).height(20).margin({right:10})
               Text('我的需求').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/MyGoodsPage',params:{type:'needs'}})
+              }
+            })
+            .width('100%').height(55).padding({left:20,right:20})
           }
           ListItem(){
             //2
@@ -185,7 +210,13 @@ export struct MyInfo {
               Image($r('app.media.tabler_credit_card')).width(20).height(20).margin({right:10})
               Text('我发布的').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/MyGoodsPage',params:{type:'goods'}})
+              }
+            }).width('100%').height(55).padding({left:20,right:20})
           }
 
           ListItem(){
@@ -194,7 +225,13 @@ export struct MyInfo {
               Image($r('app.media.map_pin')).width(20).height(20).margin({right:10})
               Text('收货地址').height(20).fontSize(16).fontColor('#0F172A').flexGrow(1).fontWeight(400)
               Image($r('app.media.chevron_right')).width(16).width(16)
-            }.width('100%').height(55).padding({left:20,right:20})
+            }.onClick(()=>{
+              if(!globalThis.token){
+                promptAction.showToast({message:"请先登录！",duration:2000})
+              }else{
+                router.pushUrl({url:'pages/ShowAddressPage',params:{type:'goods'}})
+              }
+            }).width('100%').height(55).padding({left:20,right:20})
           }
         }.backgroundColor('#ffffff')
         .divider({ strokeWidth: 1, color: '#f1f1f1', startMargin: 0, endMargin: 0 }) // 每行之间的分界线
@@ -267,7 +304,12 @@ export struct MyInfo {
             Image($r('app.media.chevron_right')).width(16).width(16)
           }.width('100%').height(55).padding({left:20,right:20})
           .onClick(()=>{
-            router.pushUrl({url:'pages/finance/RecommendRzrPage'})
+            if(!globalThis.token){
+              promptAction.showToast({message:"请先登录！",duration:2000})
+            }else{
+              router.pushUrl({url:'pages/finance/RecommendRzrPage'})
+            }
+
           })
         }
         ListItem(){
