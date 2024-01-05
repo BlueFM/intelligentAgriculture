@@ -2,7 +2,7 @@ import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
 import { baseUrl } from '../../api/BaseData';
 import { buyGoods, deleteCarGoods,  getAllAddress, getCarInfoList, getDefaultAddress, updateCarGoodsInfo } from '../../api/CarApi';
-import thermal from '@ohos.thermal';
+
 @Preview
 @Component
 export struct CarInfo {
@@ -398,7 +398,6 @@ export struct CarInfo {
                       let buyItems=[]
                       let noBuyItems=[]
                       this.goodsSrc.forEach(item=>{
-                        let a =item
                         if(item.isSelected){
                           buyItems.push(item)
                         }else{
