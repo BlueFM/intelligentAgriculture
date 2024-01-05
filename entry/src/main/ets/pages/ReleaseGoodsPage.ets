@@ -6,7 +6,7 @@ import request from '@ohos.request';
 import fs from '@ohos.file.fs'
 import common from '@ohos.app.ability.common';
 import hash from '@ohos.file.hash';
-import { baseUrl } from '../api/BaseData';
+import { baseUrl, imgUrl } from '../api/BaseData';
 import { addNeeds, editNeeds } from '../api/GoodsApi';
 
 //获取应用文件路径
@@ -68,7 +68,7 @@ struct ReleaseGoodsPage {
   }
   ///
   uploadFile() {
-    let url = baseUrl + '/file/upload/order';
+    let url = baseUrl+ '/file/upload/order';
     //上传任务配置项
     let uploadConfig = {
       url: url,
@@ -118,7 +118,7 @@ struct ReleaseGoodsPage {
       this.title = info.title
       this.price = info.price
       this.content = info.content
-      this.imgDatas=[`${baseUrl}/file/${info.picture}`]
+      this.imgDatas=[`${imgUrl}/file/${info.picture}`]
       this.picture = info.picture
 
 

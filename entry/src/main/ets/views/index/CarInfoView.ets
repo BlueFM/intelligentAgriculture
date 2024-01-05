@@ -1,6 +1,6 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
-import { baseUrl } from '../../api/BaseData';
+import { baseUrl, imgUrl } from '../../api/BaseData';
 import { buyGoods, deleteCarGoods,  getAllAddress, getCarInfoList, getDefaultAddress, updateCarGoodsInfo } from '../../api/CarApi';
 
 @Preview
@@ -191,7 +191,7 @@ export struct CarInfo {
         item.isSelected = !item.isSelected
         this.selectOperation(item, index)
       })
-      Image(baseUrl+"/file/" + item.picture).width(90)
+      Image(imgUrl+"/file/" + item.picture).width(90)
         .border({ width: 0.5, color: '#CFCFCF', radius: 5 })
         .margin({ top: 10, bottom: 10, right: 10 })
       Column() {
