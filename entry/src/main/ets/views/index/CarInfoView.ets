@@ -312,12 +312,25 @@ export struct CarInfo {
         .width('100%').height('100%')
       }else{
         Row() {
-          Row() {
-            Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
-            Text(this.showAddress(this.defaultAddress.addressDetail)).fontColor(Color.Grey)
-          }.onClick(() => {
-            this.show = true
-          })
+          if (this.defaultAddress != null){
+            Row() {
+              Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
+              Text(this.showAddress(this.defaultAddress.addressDetail)).fontColor(Color.Grey)
+            }.onClick(() => {
+              this.show = true
+            })
+          }else{
+            Row(){
+              Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
+              Text("新建地址").fontColor(Color.Grey)
+            }.onClick(
+              () => {
+                router.pushUrl({url: 'pages/EditAddressPage', params: {type: "new"}})
+              }
+            )
+
+          }
+
 
           Blank()
           Text(this.isFlag ? '编辑' : '完成').fontSize(16).fontColor(Color.Grey)
