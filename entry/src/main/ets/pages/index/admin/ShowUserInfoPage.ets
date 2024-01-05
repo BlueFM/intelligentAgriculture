@@ -1,11 +1,12 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
 import { deleteUserInfo, updateUserInfo } from '../../../api/AdminApi';
+import { User } from '../../../util/model';
 @Preview
 @Entry
 @Component
 struct ShowUserInfoPage {
-  @State user:any={}
+  @State user: User = new User
   @State show:boolean=false;
   @State roleChange:number=0
   scroller: Scroller = new Scroller()

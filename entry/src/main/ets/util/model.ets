@@ -5,7 +5,7 @@ class User{
   nickName: string | null
   realName: string | null
   phone: string | null
-  identityNum: number | null
+  identityNum: string | null
   address: string | null
   role: string
   createTime: string
@@ -13,6 +13,7 @@ class User{
   integral: number
   credit: number
   avatar: string | null
+  user_name: string | null
 }
 
 class Address{
@@ -33,8 +34,8 @@ class Expert{
 }
 
 class Discuss{
-  discussId: number
-  knowledgeId: number
+  discussId: number | string
+  knowledgeId:  string
   ownName: string
   content: string
   createdTime: string
@@ -146,4 +147,10 @@ class ShoppingCart{
   ownName: string
   createTime: string
   updateTime: string
+}
+
+export {
+  User, Address, Expert, Discuss, Knowledge,
+  Order, Purchase, PurchaseDetail, Question,
+  Recommend, Reserve, SellPurchase, ShoppingCart,
 }

@@ -2,12 +2,13 @@ import router from '@ohos.router'
 import http from '@ohos.net.http';
 import promptAction from '@ohos.promptAction';
 import { baseUrl, imgUrl } from '../../api/BaseData';
+import { Knowledge } from '../../util/model';
 
 @Entry
 @Component
 struct KnowledgeInfoPage {
   private controller: VideoController;
-  @State info: any = '';
+  @State info: Knowledge = new Knowledge;
   @State pl: string = ''
   @State pls: Array<any> = []
   private scroller: Scroller = new Scroller();
@@ -43,7 +44,7 @@ struct KnowledgeInfoPage {
 
       Row() {
         Text(`作者:${this.info.ownName}`).margin({ right: 10 }).fontSize(14)
-        Text(`日期:${this.info.createTime.substring(0, 10)}`).fontSize(14)
+        Text(`日期:${this.info.createdTime.substring(0, 10)}`).fontSize(14)
       }
       .justifyContent(FlexAlign.End)
       .width('100%')

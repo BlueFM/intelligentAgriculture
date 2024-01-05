@@ -5,8 +5,8 @@ import { login } from '../api/user'
 @Entry
 @Component
 struct Login {
-  @State username: string = 'user';
-  @State pwd: string = 'user123';
+  @State username: string = 'expert';
+  @State pwd: string = 'expert123';
 
   build() {
     Stack() {

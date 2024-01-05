@@ -1,10 +1,11 @@
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
 import { addReserve } from '../../api/ExpertApi';
+import { Reserve } from '../../util/model';
 @Entry
 @Component
 struct ExpertReservePage {
-  @State info:any={};
+  @State info: Reserve=new Reserve;
 
   aboutToAppear(){
     let name=router.getParams()["name"];

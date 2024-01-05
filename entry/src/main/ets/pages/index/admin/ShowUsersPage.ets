@@ -1,10 +1,11 @@
 import router from '@ohos.router';
 import { findAllUser } from '../../../api/AdminApi';
+import { User } from '../../../util/model';
 
 @Entry
 @Component
 struct ShowUsersPage {
-  @State users: any = []
+  @State users: Array<User> = []
   scroller: Scroller = new Scroller()
   // 获取用户信息并加载到界面中
   aboutToAppear() {

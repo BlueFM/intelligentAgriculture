@@ -1,13 +1,15 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
-import { baseUrl } from '../../../api/BaseData';
+import { baseUrl, imgUrl } from '../../../api/BaseData';
 import { deleteKnowledge } from '../../../api/KnowledgeApi';
+import { Discuss, Knowledge } from '../../../util/model';
 
+type EK = Knowledge & Discuss
 @Entry
 @Component
 struct ExperKnowledgeInfoPage {
   private controller: VideoController;
-  @State info: any = '';
+  @State info: EK = null;
 
   deleteKnowledge(){
     deleteKnowledge(this.info.knowledgeId).then(rst=>{
@@ -49,29 +51,34 @@ struct ExperKnowledgeInfoPage {
 
       Row() {
         Text(`作者:${this.info.ownName}`).margin({ right: 10 }).fontSize(14)
-        Text(`日期:${this.info.createTime.substring(0, 10)}`).fontSize(14)
+        Text(this.info.createdTime ? `日期:${this.info.createdTime.substring(0, 10)}`:"日期：未知").fontSize(14)
       }
       .justifyContent(FlexAlign.End)
       .width('100%')
       .margin({ top: 10, bottom: 10 })
       .height(30)
       .alignItems(VerticalAlign.Center)
+      if (this.info.picPath != null) {
+        if (this.info.picPath.lastIndexOf('.mp4') == -1) {
+          Image(`${imgUrl}/file/${this.info.picPath}`)
+            .width('100%')
+            .height(200)
+            .margin({ bottom: 10 })
+        }
+        if (this.info.picPath.lastIndexOf('.mp4') >= 0) {
+          Video({
+            src: `${imgUrl}/file/${this.info.picPath}`,
+            controller: this.controller
+          })
+            .width('100%')
+            .height(200)
+            .margin({ bottom: 10 })
+        }
+      }else{
+        Image($r('app.media.user_1'))
+          .width(100).height(100).borderRadius(5)
+      }
 
-      if (this.info.picPath.lastIndexOf('.mp4') == -1) {
-        Image(`${baseUrl}/file/${this.info.picPath}`)
-          .width('100%')
-          .height(200)
-          .margin({ bottom: 10 })
-      }
-      if (this.info.picPath.lastIndexOf('.mp4') >= 0) {
-        Video({
-          src: `${baseUrl}/file/${this.info.picPath}`,
-          controller: this.controller
-        })
-          .width('100%')
-          .height(200)
-          .margin({ bottom: 10 })
-      }
       Row() {
         Text(this.info.content).fontSize(16).lineHeight(30)
       }.width('100%').margin({ top: 10, bottom: 10 }).layoutWeight(1).alignItems(VerticalAlign.Top)

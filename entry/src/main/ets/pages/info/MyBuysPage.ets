@@ -2,7 +2,7 @@
  * 我买的
  */
 import router from '@ohos.router'
-import { baseUrl } from '../../api/BaseData';
+import { baseUrl, imgUrl } from '../../api/BaseData';
 import { getMyBuys } from '../../api/CarApi';
 @Preview
 @Entry
@@ -24,7 +24,7 @@ struct MyBuysPage {
   // 商品详情
   @Builder GoodsItem(item, index) {
     Row() {
-      Image(baseUrl+"/file/" + item.picture).width(90)
+      Image(imgUrl+"/file/" + item.picture).width(90)
         .border({ width: 0.5, color: '#CFCFCF', radius: 5 })
         .margin({ top: 10, bottom: 10, right: 10 })
       Column() {
