@@ -312,7 +312,7 @@ export struct CarInfo {
         .width('100%').height('100%')
       }else{
         Row() {
-          if (this.defaultAddress != null){
+          if (this.defaultAddress != null && this.defaultAddress.addressDetail != null){
             Row() {
               Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
               Text(this.showAddress(this.defaultAddress.addressDetail)).fontColor(Color.Grey)
