@@ -38,6 +38,7 @@
     "pages/ShowAddressPage",
     "pages/EditAddressPage",
     "pages/info/MyBuysPage",
-    "pages/info/MySellsPage"
+    "pages/info/MySellsPage",
+    "pages/commentPage"
   ]
 }

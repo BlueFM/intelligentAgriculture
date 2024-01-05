@@ -1,5 +1,5 @@
 import router from '@ohos.router'
-import { baseUrl } from '../../../api/BaseData';
+import { baseUrl, imgUrl } from '../../../api/BaseData';
 import { selectExpertKnowledge } from '../../../api/KnowledgeApi';
 
 
@@ -53,17 +53,22 @@ struct ExpertKnowledgePage {
           List(){
             ForEach(this.knowledgeDatas, (item, i) => {
               ListItem(){
-                Row() {
+                Row() {if(item.picPath != null){
                   if (item.picPath.lastIndexOf('.mp4')==-1) {
-                    Image(`${baseUrl}/file/${item.picPath}`)
+                    Image(`${imgUrl}/file/${item.picPath}`)
                       .width(100).height(100).borderRadius(5)
                   }
                   if(item.picPath.lastIndexOf('.mp4')>=0){
                     Video({
-                      src:`${baseUrl}/file/${item.picPath}`,
+                      src:`${imgUrl}/file/${item.picPath}`,
                       controller: this.controller
                     }).width(100).height(100).borderRadius(5)
                   }
+                }else{
+                  Image($r('app.media.user_1'))
+                    .width(100).height(100).borderRadius(5)
+                }
+
                   Flex({ direction: FlexDirection.Column }) {
                     Text(`${this.showTitle(item.title)}`).fontSize(15).fontWeight(FontWeight.Bold)
                     Text(`${this.showMst(item.content)}`)

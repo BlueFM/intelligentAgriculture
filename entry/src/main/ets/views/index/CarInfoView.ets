@@ -2,7 +2,7 @@ import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
 import { baseUrl } from '../../api/BaseData';
 import { buyGoods, deleteCarGoods,  getAllAddress, getCarInfoList, getDefaultAddress, updateCarGoodsInfo } from '../../api/CarApi';
-import thermal from '@ohos.thermal';
+
 @Preview
 @Component
 export struct CarInfo {
@@ -312,12 +312,25 @@ export struct CarInfo {
         .width('100%').height('100%')
       }else{
         Row() {
-          Row() {
-            Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
-            Text(this.showAddress(this.defaultAddress.addressDetail)).fontColor(Color.Grey)
-          }.onClick(() => {
-            this.show = true
-          })
+          if (this.defaultAddress != null){
+            Row() {
+              Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
+              Text(this.showAddress(this.defaultAddress.addressDetail)).fontColor(Color.Grey)
+            }.onClick(() => {
+              this.show = true
+            })
+          }else{
+            Row(){
+              Image($r('app.media.dingwei')).width(40).height(40).margin({ left: 0, right: 5 })
+              Text("新建地址").fontColor(Color.Grey)
+            }.onClick(
+              () => {
+                router.pushUrl({url: 'pages/EditAddressPage', params: {type: "new"}})
+              }
+            )
+
+          }
+
 
           Blank()
           Text(this.isFlag ? '编辑' : '完成').fontSize(16).fontColor(Color.Grey)
@@ -392,28 +405,32 @@ export struct CarInfo {
                   .borderRadius(20)
                   .margin({ left: 10 })
                   .onClick(()=>{
-                    let buyItems=[]
-                    let noBuyItems=[]
-                    this.goodsSrc.forEach(item=>{
-                      let a =item
-                      if(item.isSelected){
-                        buyItems.push(item)
-                      }else{
-                        noBuyItems.push(item)
-                      }
-                    })
-                    let userId=this.defaultAddress.id;
-                    buyGoods(userId,this.totalPrice,buyItems).then((res)=>{
-                      let data=JSON.parse(res.result.toString());
-                      if(data.code=20000){
-                        this.goodsSrc=noBuyItems;
-                        router.pushUrl({url:'pages/BuyResultPage'})
-                      }
-                      promptAction.showToast({
-                        message:data.message,
-                        duration:2000
+                    if(this.selectedCount==0){
+                      promptAction.showToast({message:"您未选择商品，请选择后结算",duration: 1500})
+                    }else{
+                      let buyItems=[]
+                      let noBuyItems=[]
+                      this.goodsSrc.forEach(item=>{
+                        if(item.isSelected){
+                          buyItems.push(item)
+                        }else{
+                          noBuyItems.push(item)
+                        }
                       })
-                    })
+                      let userId=this.defaultAddress.id;
+                      buyGoods(userId,this.totalPrice,buyItems).then((res)=>{
+                        let data=JSON.parse(res.result.toString());
+                        if(data.code=20000){
+                          this.goodsSrc=noBuyItems;
+                          router.pushUrl({url:'pages/BuyResultPage'})
+                        }
+                        promptAction.showToast({
+                          message:data.message,
+                          duration:2000
+                        })
+                      })
+                    }
+
                   })
               } else {
                 Text("删除")

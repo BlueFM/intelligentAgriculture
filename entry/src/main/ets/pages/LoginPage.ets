@@ -1,10 +1,6 @@
 import router from '@ohos.router'
-import http from '@ohos.net.http';
-import fs from '@ohos.file.fs';
-import { baseUrl } from '../api/BaseData';
-import { HttpManager } from '../util/HttpManager';
-import { RequestMethod } from '../util/RequestOption';
 import { login } from '../api/LoginApi';
+import hilog from '@ohos.hilog';
 @Preview
 @Entry
 @Component
@@ -19,6 +15,7 @@ struct LoginPage {
       // 请求是否成功
       if (rst.code == 20000) {
         globalThis.token = rst.data
+        hilog.info(0x004,'login',`${rst.data}`)
         router.replaceUrl({ url: "pages/Index" })
       } else {
         AlertDialog.show({
@@ -66,7 +63,7 @@ struct LoginPage {
           Text('融销通').fontColor('#a4cd3d').fontSize(24).margin(15)
           Row() {
             Text('账 号:').fontSize(14).margin({ left: 15 }).fontColor(Color.Grey)
-            TextInput({ placeholder: '请输入账号',text:'user' })
+            TextInput({ placeholder: '请输入账号',text:'expert' })
               .borderWidth(0)
               .backgroundColor(Color.Transparent)
               .flexGrow(1)
@@ -84,7 +81,7 @@ struct LoginPage {
 
           Row() {
             Text('密 码:').fontSize(14).margin({ left: 15 }).fontColor(Color.Grey)
-            TextInput({ placeholder: '请输入密码',text:'user123'})
+            TextInput({ placeholder: '请输入密码',text:'expert123'})
               .borderWidth(0)
               .backgroundColor(Color.Transparent)
               .flexGrow(1)

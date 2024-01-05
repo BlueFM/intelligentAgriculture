@@ -1,10 +1,11 @@
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
 import { addQuestion } from '../../api/ExpertApi';
+import { Question } from '../../util/model';
 @Entry
 @Component
 struct ExpertQuestionPage {
-  @State info:any={};
+  @State info:Question =  new Question;
 
   aboutToAppear(){
     let name=router.getParams()["name"];

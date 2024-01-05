@@ -3,7 +3,7 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct QuestionInfoPage {
-  @State info: any = ''
+  @State info: any = {}
   // 问答内容行数 以20个字为一行
   @State qHeight:number=0
   @State aHeight:number=0
@@ -11,8 +11,18 @@ struct QuestionInfoPage {
     // 获取传过来的问答信息
     this.info = JSON.parse(router.getParams()['info']);
     // 获取行数 由于是下整除 所以需要+1
-    this.qHeight=(this.info.question.length)/20+1
-    this.aHeight=(this.info.answer.length)/20+1
+    if(this.info.question){
+      this.qHeight=(this.info.question.length)/20+1
+
+    }else{
+      this.qHeight = 1
+
+    }
+
+    if(this.info.answer){
+      this.aHeight=(this.info.answer.length)/20+1
+    }else{this.aHeight = 1}
+
   }
   build() {
     Row() {

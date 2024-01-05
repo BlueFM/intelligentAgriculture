@@ -1,10 +1,11 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
 import { updateQuestion } from '../../../api/QuestionApi';
+import { Question } from '../../../util/model';
 @Entry
 @Component
 struct EditMyWenDaPage {
-  @State item:any={};
+  @State item:Question = new Question;
   // ../../../api/QuestionApi
   aboutToAppear(){
     this.item=router.getParams()['wenda']
