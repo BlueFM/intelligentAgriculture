@@ -17,10 +17,11 @@ struct GoodInfoPage {
         Text('详细信息').width('100%').height(60).fontSize(20).width('100%')
           .textAlign(TextAlign.Center).fontColor(Color.Grey)
         Image($r('app.media.iv_back_selected')).width(40).height(40)
-          .onClick(() => {
-            router.back();
-          }).margin({left:10})
+
       }.height(60).width('100%').margin({top:10}).zIndex(1)
+      .onClick(() => {
+        router.back();
+      }).margin({left:10})
 
       Column(){
         Image(this.info.picture == undefined ? $r('app.media.Bag'):`${imgUrl}/file/${this.info.picture}`)
@@ -46,7 +47,23 @@ struct GoodInfoPage {
           Column(){
             Image($r('app.media.pl')).width(20).height(20).margin({bottom:5})
             Text("评论").fontSize(14)
-          }
+          }.onClick(
+            () => {
+              if(globalThis.token){
+                router.pushUrl({url: 'pages/commentPage', params:{item:this.info}})
+              }else{
+                AlertDialog.show({
+                  title: '提示',
+                  message: "请先登录！",
+                  primaryButton: {
+                    value: '确定',
+                    action: () => {
+                    }
+                  }
+                })
+              }
+            }
+          )
           Column(){
             Button('加入购物车')
               .visibility(this.info.type=='goods'?Visibility.Visible:Visibility.None)
@@ -58,6 +75,7 @@ struct GoodInfoPage {
                     let rst = JSON.parse(res.result.toString());
                     if(rst.code==20000){
                       promptAction.showToast({message:"添加商品到购物车成功！",duration:2000})
+                      router.back()
                     }else{
                       promptAction.showToast({message:"添加商品到购物车失败！",duration:2000})
                     }

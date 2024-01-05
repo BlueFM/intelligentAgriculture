@@ -15,12 +15,11 @@ export function getLocation(ip:string){
       url:'https://openlocation-drcn.platform.dbankcloud.com/networklocation/v1/ipLocation',
       method:RequestMethod.POST,
       header:{
-        'Authorization':`Bearer ${apiKey}`,
-        'Content-Type':'application/json',
+        Authorization: "Bearer"+" "+`${apiKey}`,
         'x-forwarded-for':`${ip}`
       },
       extraData:{
-        ip
+        ip: ip,
       }
     })
 }

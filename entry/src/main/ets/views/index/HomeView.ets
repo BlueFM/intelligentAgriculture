@@ -13,7 +13,7 @@ export struct Home {
   @State goodsSrc: Array<any> = [];
   @State pageNum: number = 1;
   @State cityName: string = ''
-  @State word: string = '兰州';
+  @State word: string = '兰州市';
 
 
   //获取所有商品的信息
@@ -85,7 +85,8 @@ export struct Home {
     Column() {
       Row() {
         Row() {
-          Text(this.cityName)
+          // Text(this.cityName)
+          Text(this.word)
             .padding({left:5})
           Text().height(35).border({ width: 1, color: '#C6C9CD' })
             .margin({ left: 5, right: 5 })

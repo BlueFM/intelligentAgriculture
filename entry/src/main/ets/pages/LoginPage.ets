@@ -1,10 +1,6 @@
 import router from '@ohos.router'
-import http from '@ohos.net.http';
-import fs from '@ohos.file.fs';
-import { baseUrl } from '../api/BaseData';
-import { HttpManager } from '../util/HttpManager';
-import { RequestMethod } from '../util/RequestOption';
 import { login } from '../api/LoginApi';
+import hilog from '@ohos.hilog';
 @Preview
 @Entry
 @Component
@@ -19,6 +15,7 @@ struct LoginPage {
       // 请求是否成功
       if (rst.code == 20000) {
         globalThis.token = rst.data
+        hilog.info(0x004,'login',`${rst.data}`)
         router.replaceUrl({ url: "pages/Index" })
       } else {
         AlertDialog.show({

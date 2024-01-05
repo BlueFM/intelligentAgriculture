@@ -1,7 +1,7 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
 import { deleteNeeds, getMyGoods } from '../api/GoodsApi';
-import { baseUrl } from '../api/BaseData';
+import { baseUrl, imgUrl } from '../api/BaseData';
 
 
 @Entry
@@ -64,7 +64,7 @@ struct MyGoodsPage {
             Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
               ForEach(this.goodsSrc, (item, index) => {
                 Column() {
-                  Image(`${baseUrl}/file/${item.picture}`)
+                  Image(`${imgUrl}/file/${item.picture}`)
                     .width('100%')
                     .height(160)
                     .borderRadius(10)
