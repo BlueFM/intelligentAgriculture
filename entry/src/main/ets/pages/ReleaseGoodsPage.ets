@@ -68,7 +68,7 @@ struct ReleaseGoodsPage {
   }
   ///
   uploadFile() {
-    let url = baseUrl+ '/file/upload/order';
+    let url = imgUrl+ '/file/upload/order';
     //上传任务配置项
     let uploadConfig = {
       url: url,
